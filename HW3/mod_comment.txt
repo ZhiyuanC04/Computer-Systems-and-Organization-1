@@ -1,0 +1,18 @@
+Zhiyuan Chang, HW3 Modulo. vgs3qt
+
+60 XX 64 XX --> Put these two numbers into register 0 and 1.
+6C 1C 73 77 --> Check if either of them is 0, if yes go to position 1C and put 0x00 in 0xD0.
+55 5F --> Put B into -B, B is the second input value, stored in R1. And put pc valune into R3.
+68 D1 4E --> Put the pc value of the begining of the loop in 0xD1.
+6D 0F --> Then change the R3's pc value to 18, which is the end of loop. 
+08 69 01 19 --> Copy R0's value into R2 and add 1, then subtract it from R1(-B).
+7B --> If R2 is still positive, meaning R0+1 > B, continue, otherwise go to the end of loop.
+11 --> Continue the loop, R0 + R1(-B). R0 will still be positive or 0
+6F D1 --> Read the pc value stored in 0xD1. 
+77 --> Go to the start of the loop. We use -B as rA so it will definitely <0.
+
+6C D0 43 --> 6C is at pc value 18. If the 7B is <=0, it will come here, end the loop and put R0 into position 0xD0.
+80 --> End the run, stop.
+
+68 D0 60 00 43 --> 68 is at pc value 1C, meaning the input has 0, put 0 in position 0xD0.
+80 --> End the run, stop.
