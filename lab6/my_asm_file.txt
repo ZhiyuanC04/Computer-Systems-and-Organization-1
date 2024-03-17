@@ -1,0 +1,23 @@
+mov $0x02, %r1
+mov $0x02, %r2
+
+mov pcvalueone, %r3
+jump %r2, %r3
+neg %r2
+pcvalueone:
+
+mov pcvaluetwo, %r3
+jump %r1, %r1
+neg %r1
+pcvaluetwo:
+neg %r1
+
+pcvaluethree:
+add %r1, %r0
+add $0x01, %r2
+mov pcvaluethree, %r3
+jump %r2, %r3
+neg %r1
+add %r1, %r0
+
+halt
